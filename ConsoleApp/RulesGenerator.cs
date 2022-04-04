@@ -1,35 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+﻿using System.Text.RegularExpressions;
 
-namespace gitinclude
+namespace Gitinclude.ConsoleApp;
+
+public interface IRulesGenerator
 {
-    public class RulesGenerator
+    string GetIgnoreRulesFromIncludeRules(string includesText);
+}
+
+public class RulesGenerator : IRulesGenerator
+{
+    public virtual string GetIgnoreRulesFromIncludeRules(string includesText)
     {
-        public string GetIgnoreRulesFromIncludeRules(string includesText)
+        var includes = Regex.Split(includesText, @"(\r\n|\r|\n)").Select(x => x.Trim()).Where(x => x != "").ToArray();
+
+        var ignoreRules = new List<string>();
+        foreach(var include in includes)
         {
-            var includes = Regex.Split(includesText, @"(\r\n|\r|\n)").Select(x => x.Trim()).Where(x => x != "").ToArray();
+            var pathParts = include.Split('/');
+            ignoreRules.Add("!" + pathParts[0] + "/");
 
-            var ignoreRules = new List<string>();
-            foreach(var include in includes)
+            ignoreRules.Add(pathParts[0] + "/*");
+            for (var i = 2; i < pathParts.Length; i++)
             {
-                var pathParts = include.Split('/');
-                ignoreRules.Add("!" + pathParts[0] + "/");
-
-                ignoreRules.Add(pathParts[0] + "/*");
-                for (var i = 2; i < pathParts.Length; i++)
-                {
-                    var path = string.Join('/', pathParts.Take(i));
-                    ignoreRules.Add("!" + path + "/");
-                    ignoreRules.Add(path + "/*");
-                }
-                ignoreRules.Add("!" + include);
+                var path = string.Join('/', pathParts.Take(i));
+                ignoreRules.Add("!" + path + "/");
+                ignoreRules.Add(path + "/*");
             }
-            ignoreRules = ignoreRules.Distinct().OrderBy(x => x.Count(x => x == '/')).ThenBy(x => x.TrimStart('!')).ToList();
-            return "*" + Environment.NewLine + String.Join(Environment.NewLine, ignoreRules);
+            ignoreRules.Add("!" + include);
         }
+        ignoreRules = ignoreRules.Distinct().OrderBy(x => x.Count(x => x == '/')).ThenBy(x => x.TrimStart('!')).ToList();
+        return "*" + Environment.NewLine + String.Join(Environment.NewLine, ignoreRules);
     }
 }

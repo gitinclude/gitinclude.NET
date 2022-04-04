@@ -1,6 +1,6 @@
 using Xunit;
 
-namespace gitinclude.tests
+namespace Gitinclude.ConsoleApp.Tests
 {
     public class RulesGeneratorTests
     {
