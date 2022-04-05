@@ -1,16 +1,16 @@
 ﻿using Xunit;
 
-namespace Gitinclude.ConsoleApp.Tests
+namespace Gitinclude.Tests;
+
+public class SectionReplacerTests
 {
-    public class SectionReplacerTests
-    {
-        const string _newSectionText =
+    const string _newSectionText =
 @"Line A
 Line B
 Line C";
 
-        [Theory]
-        [InlineData(
+    [Theory]
+    [InlineData(
 @"// Something before
 
 # Section START
@@ -29,7 +29,7 @@ Line C
 
 # Something after")]
 
-[InlineData(
+    [InlineData(
 @"// No section yet",
 @"// No section yet
 
@@ -38,7 +38,7 @@ Line A
 Line B
 Line C
 # Section END")]
-        [InlineData(
+    [InlineData(
 @"# Section START
 Line A
 Line B
@@ -49,15 +49,14 @@ Line A
 Line B
 Line C
 # Section END")]
-        public void Test(string originalText, string expectedNewText)
-        {
-            var sectionReplacer = new SectionReplacer(
-                sectionOpener: "# Section START",
-                sectionCloser: "# Section END");
-            var result = sectionReplacer.GetTextWithSection(
-                             originalText: originalText,
-                             newSectionText: _newSectionText);
-            Assert.Equal(expectedNewText, result);
-        }
+    public void Test(string originalText, string expectedNewText)
+    {
+        var sectionReplacer = new SectionReplacer(
+            sectionOpener: "# Section START",
+            sectionCloser: "# Section END");
+        var result = sectionReplacer.GetTextWithSection(
+                         originalText: originalText,
+                         newSectionText: _newSectionText);
+        Assert.Equal(expectedNewText, result);
     }
 }

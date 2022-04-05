@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace Gitinclude.ConsoleApp;
+namespace Gitinclude;
 
 public interface IRulesGenerator
 {
@@ -20,10 +20,7 @@ public class RulesGenerator : IRulesGenerator
 
             if (pathParts.Length == 1)
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine($"Each .gitinclude rule should contain a forward slash '/' to define a folder to exclude on the left and an inclusion path on the right. The rule '{include}' is not allowed.");
-                Console.ReadKey();
-                Environment.Exit(-1);
+                throw new Exception($"Each .gitinclude rule should contain a forward slash '/' to define a folder to exclude on the left and an inclusion path on the right. The rule '{include}' is not allowed.");
             }
 
             ignoreRules.Add(pathParts[0] + "/*");
@@ -36,6 +33,6 @@ public class RulesGenerator : IRulesGenerator
             ignoreRules.Add("!" + include);
         }
         ignoreRules = ignoreRules.Distinct().OrderBy(x => x.Count(x => x == '/')).ThenBy(x => x.TrimStart('!')).ToList();
-        return String.Join(Environment.NewLine, ignoreRules);
+        return string.Join(Environment.NewLine, ignoreRules);
     }
 }

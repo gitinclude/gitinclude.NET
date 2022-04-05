@@ -2,7 +2,7 @@
 using Moq;
 using System.IO;
 
-namespace Gitinclude.ConsoleApp.Tests;
+namespace Gitinclude.Tests;
 
 public class GitignoreUpdatorTests
 {

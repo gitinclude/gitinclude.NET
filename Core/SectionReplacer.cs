@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace Gitinclude.ConsoleApp;
+namespace Gitinclude;
 
 public interface ISectionReplacer
 {
