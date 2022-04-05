@@ -6,7 +6,7 @@ public class _Main
     {
         Console.ForegroundColor = ConsoleColor.Black;
         Console.BackgroundColor = ConsoleColor.Green;
-        Console.WriteLine("  Gitignore ConsoleApp v3.0.0  ");
+        Console.WriteLine("  Gitinclude ConsoleApp v3.0.1  ");
         Console.ResetColor();
 
         var gitIgnoreUpdator = new GitignoreUpdator(
