@@ -37,7 +37,7 @@ StrategicProject/*
 ```
 do work, but perform less wel (solution 1 is best performance, then solution 2 and worst is solution 3).
 
-The lines `!StrategicProject/**/``and `!*/` end with a slash (`/`) and therefore only match folders and "include them" (well, not really, because only files can be tracked).
+The lines `!StrategicProject/**/` and `!*/` end with a slash (`/`) and therefore only match folders and "include them" (well, not really, because only files can be tracked).
 They do not result in including files, but they allow un-ignoring deeply nested files.
 
 ## How to use?
