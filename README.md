@@ -2,7 +2,7 @@
 
 ## Why?
 
-I started this as a nice little puzzle in response to a StackOverflow question, where the problem was to provide an easy and offline way to create a pattern like this (let's call it *soluiton 1*'):
+I started this as a nice little puzzle in response to a StackOverflow question, where the problem was to provide an easy and offline way to create a pattern like this (let's call it *soluiton 1*):
 ```
 StrategicProject/*
 !StrategicProject/SpecificProject1/
@@ -22,7 +22,7 @@ StrategicProject/*
 ```
 does not work in git, because git "does not look in" ignored folders.
 
-But *solution 2*
+Although *solution 2*
 ```
 StrategicProject/**
 !StrategicProject/**/
@@ -35,10 +35,12 @@ StrategicProject/*
 
 !*/ # on the last line of your .gitignore file: tell git to look in all folders, even ignored ones.
 ```
-do work, but perform less wel (solution 1 is best performance, then solution 2 and worst is solution 3).
+do work, they are not in all aspects better, because they perform less well (*solution 1* has the best performance, then *solution 2* and worst is *solution 3*).
 
-The lines `!StrategicProject/**/` and `!*/` end with a slash (`/`) and therefore only match folders and "include them" (well, not really, because only files can be tracked).
+The lines `!StrategicProject/**/` and `!*/` end with a slash and therefore only match folders and "include them" (well, not really, because only files can be tracked).
 They do not result in including files, but they allow un-ignoring deeply nested files.
+
+This repo contains the code and downloads (executable files) for creating the best performing *solution 1* with "just one line in a `.gitinclude` and a mouse click".
 
 ## How to use?
 
@@ -61,14 +63,6 @@ Folder/SubFolder/*
 # .gitignore generated rules END
 ```
 Executing the app again updates the `.gitignore` if needed.
-
-## Details
-
-- A `.gitinclude` cannot affect the files in the root folder, so if you want those to be ignored, use the `.gitignore`.
-- By default, everything is included, but if you define a `.gitinclude` rule, 
-   1. everything in the base folder and its subfolders of that rule is excluded
-   1. and the `.gitinclude` rules say what are the only files or file sets that should be included.
-- Comments (starting with `#`) are ignored.
 
 ## Downloads
 
