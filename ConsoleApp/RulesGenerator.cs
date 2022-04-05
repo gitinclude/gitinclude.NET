@@ -20,11 +20,11 @@ public class RulesGenerator : IRulesGenerator
 
             if (pathParts.Length == 1)
             {
-                ignoreRules.Add("!" + pathParts[0]);
-                continue;
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"Each .gitinclude rule should contain a forward slash '/' to define a folder to exclude on the left and an inclusion path on the right. The rule '{include}' is not allowed.");
+                Console.ReadKey();
+                Environment.Exit(-1);
             }
-
-            ignoreRules.Add("!" + pathParts[0] + "/");
 
             ignoreRules.Add(pathParts[0] + "/*");
             for (var i = 2; i < pathParts.Length; i++)
@@ -36,6 +36,6 @@ public class RulesGenerator : IRulesGenerator
             ignoreRules.Add("!" + include);
         }
         ignoreRules = ignoreRules.Distinct().OrderBy(x => x.Count(x => x == '/')).ThenBy(x => x.TrimStart('!')).ToList();
-        return "*" + Environment.NewLine + String.Join(Environment.NewLine, ignoreRules);
+        return String.Join(Environment.NewLine, ignoreRules);
     }
 }
