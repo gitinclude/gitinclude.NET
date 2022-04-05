@@ -8,8 +8,4 @@
 	<RootNamespace>GitInclude.ConsoleApp</RootNamespace>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="Executables\" />
-  </ItemGroup>
-
 </Project>

@@ -38,6 +38,17 @@ Line A
 Line B
 Line C
 # Section END")]
+        [InlineData(
+@"# Section START
+Line A
+Line B
+Line C
+# Section END",
+@"# Section START
+Line A
+Line B
+Line C
+# Section END")]
         public void Test(string originalText, string expectedNewText)
         {
             var sectionReplacer = new SectionReplacer(

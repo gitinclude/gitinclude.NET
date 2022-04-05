@@ -47,9 +47,33 @@ StrategicProject/SpecificProject1/Method1/*
 StrategicProject/SpecificProject1/Method1/doc/*
 !StrategicProject/SpecificProject1/Method1/doc/*.lyx
 !StrategicProject/SpecificProject1/Method1/doc/*.tex")]
-        public void Test(string include, string ignore)
+        [InlineData(
+@".gitinclude
+folder/file.txt
+readme.md",
+        @"*
+!.gitinclude
+!readme.md
+!folder/
+folder/*
+!folder/file.txt")]
+        [InlineData(
+@"# whole-line comment on first line
+.gitinclude # comment at the right of a rule
+folder/file.txt
+#comment between rules
+readme.md
+# whole-line comment on last line",
+        @"*
+!.gitinclude
+!readme.md
+!folder/
+folder/*
+!folder/file.txt")]
+        public void Test(string includeRules, string ignore)
         {
-            Assert.Equal(ignore, new RulesGenerator().GetIgnoreRulesFromIncludeRules(include));
+            var newIgnoreRules = new RulesGenerator().GetIgnoreRulesFromIncludeRules(includeRules);
+            Assert.Equal(ignore, newIgnoreRules);
         }
     }
 }

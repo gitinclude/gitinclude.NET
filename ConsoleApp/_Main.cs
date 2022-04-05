@@ -4,6 +4,8 @@ public class _Main
 {
     static void Main(string[] args)
     {
+        Console.WriteLine("Gitignore ConsoleApp v2.0.0");
+
         var gitIgnoreUpdator = new GitignoreUpdator(
             rulesGenerator: new RulesGenerator(),
             sectionReplacer: new SectionReplacer(),
@@ -30,7 +32,7 @@ public class _Main
 
             gitIgnoreUpdator.Update(directory);
 
-            Console.WriteLine("Your .gitignore has been updated.");
+            Console.WriteLine("Your .gitignore is up to date.");
             Console.ReadKey();
         }
         catch (Exception ex)

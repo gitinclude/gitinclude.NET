@@ -28,19 +28,20 @@ public class SectionReplacer : ISectionReplacer
         {
             return fullSection;
         }
-        else
+        else 
         {
-            var newText =  Regex.Replace(
-                input: originalText,
-                pattern: Regex.Escape(_sectionOpener) + @"[\s\S]*" + Regex.Escape(_sectionCloser),
-                replacement: fullSection);
-
-            if (newText == originalText)
+            var pattern = Regex.Escape(_sectionOpener) + @"[\s\S]*" + Regex.Escape(_sectionCloser);
+            if (Regex.IsMatch(originalText, pattern))
             {
-                newText += Environment.NewLine + Environment.NewLine + fullSection;
+                return Regex.Replace(
+                    input: originalText,
+                    pattern: pattern,
+                    replacement: fullSection);
             }
-
-            return newText;
+            else
+            {
+                return originalText + Environment.NewLine + Environment.NewLine + fullSection;
+            }
         }
     }
 }

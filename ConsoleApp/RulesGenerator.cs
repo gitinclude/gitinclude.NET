@@ -11,12 +11,19 @@ public class RulesGenerator : IRulesGenerator
 {
     public virtual string GetIgnoreRulesFromIncludeRules(string includesText)
     {
-        var includes = Regex.Split(includesText, @"(\r\n|\r|\n)").Select(x => x.Trim()).Where(x => x != "").ToArray();
+        var includes = Regex.Split(includesText, @"(\r\n|\r|\n)").Select(x => x.Split("#")[0].Trim()).Where(x => x != "").ToArray();
 
         var ignoreRules = new List<string>();
         foreach(var include in includes)
         {
             var pathParts = include.Split('/');
+
+            if (pathParts.Length == 1)
+            {
+                ignoreRules.Add("!" + pathParts[0]);
+                continue;
+            }
+
             ignoreRules.Add("!" + pathParts[0] + "/");
 
             ignoreRules.Add(pathParts[0] + "/*");
