@@ -4,7 +4,7 @@ For including only deeply nested sets of files.
 
 ## Why?
 
-I did this as a nice little puzzle (a programming exercise) in response to a StackOverflow question, where the problem was to provide an easy and offline way to create a pattern like this (let's call it *soluiton 1*):
+I did this as a nice little puzzle (a programming exercise) in response to a [StackOverflow question](https://stackoverflow.com/questions/71728176/easier-way-to-not-ignore-a-specific-deeply-nested-set-of-files), where the problem was to provide an easy and offline way to create a pattern like this (let's call it *soluiton 1*):
 ```
 StrategicProject/*
 !StrategicProject/SpecificProject1/
