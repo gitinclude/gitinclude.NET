@@ -70,6 +70,6 @@ Executing the app again updates the `.gitignore` if needed.
 
 | Platform | Self-contained (just works) | Requires .NET6 runtime
 | --- | --- | --- |
-| Windows-X64 | [download (11MB)](https://github.com/gitinclude/gitinclude.NET/raw/master/ConsoleApp/Executables/windows/gitinclude.exe) | [download (161KB))](https://github.com/gitinclude/gitinclude.NET/raw/master/ConsoleApp/Executables/windows/small-without-dotnet-runtime/gitinclude.exe)
-| Linux-X64 | [download (13MB)](https://github.com/gitinclude/gitinclude.NET/raw/master/ConsoleApp/Executables/linux/gitinclude) | [download (155KB)](https://github.com/gitinclude/gitinclude.NET/raw/master/ConsoleApp/Executables/linux/small-without-dotnet-runtime/gitinclude)
-| OSX-X64 | [download (13MB)](https://github.com/gitinclude/gitinclude.NET/raw/master/ConsoleApp/Executables/osx/gitinclude) | [download (126KB)](https://github.com/gitinclude/gitinclude.NET/raw/master/ConsoleApp/Executables/osx/small-without-dotnet-runtime/gitinclude)
+| Windows-x64 | [download (11MB)](https://github.com/gitinclude/gitinclude.NET/raw/master/ConsoleApp/Executables/windows/gitinclude.exe) | [download (161KB)](https://github.com/gitinclude/gitinclude.NET/raw/master/ConsoleApp/Executables/windows/small-without-dotnet-runtime/gitinclude.exe)
+| Linux-x64 | [download (13MB)](https://github.com/gitinclude/gitinclude.NET/raw/master/ConsoleApp/Executables/linux/gitinclude) | [download (155KB)](https://github.com/gitinclude/gitinclude.NET/raw/master/ConsoleApp/Executables/linux/small-without-dotnet-runtime/gitinclude)
+| OSX-x64 | [download (13MB)](https://github.com/gitinclude/gitinclude.NET/raw/master/ConsoleApp/Executables/osx/gitinclude) | [download (126KB)](https://github.com/gitinclude/gitinclude.NET/raw/master/ConsoleApp/Executables/osx/small-without-dotnet-runtime/gitinclude)
