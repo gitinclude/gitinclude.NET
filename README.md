@@ -4,7 +4,7 @@ For including only deeply nested sets of files.
 
 ## Why?
 
-I started this as a nice little puzzle (a programming exercise) in response to a StackOverflow question, where the problem was to provide an easy and offline way to create a pattern like this (let's call it *soluiton 1*):
+I did this as a nice little puzzle (a programming exercise) in response to a StackOverflow question, where the problem was to provide an easy and offline way to create a pattern like this (let's call it *soluiton 1*):
 ```
 StrategicProject/*
 !StrategicProject/SpecificProject1/
@@ -37,7 +37,7 @@ StrategicProject/*
 
 !*/ # on the last line of your .gitignore file: tell git to look in all folders, even ignored ones.
 ```
-do work, they may perform less well.
+do work, they may perform less well (I did not verify this, but it seems logical).
 
 The lines `!StrategicProject/**/` and `!*/` end with a slash and therefore only match folders and "include them" (well, not really, because only files can be tracked).
 They do not result in including files, but they allow un-ignoring deeply nested files.
